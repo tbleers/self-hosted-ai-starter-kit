@@ -113,17 +113,16 @@ jobs:
     needs: [validate, test, scan]
     if: always()
     steps:
-      - name: Validation Status
-        run: echo "✅ Docker Compose validation: ${{ needs.validate.result }}"
-
-      - name: Test Status
-        run: echo "✅ Service tests: ${{ needs.test.result }}"
-
-      - name: Security Scan Status
-        run: echo "✅ Security scan: ${{ needs.scan.result }}"
-
       - name: Check overall status
         run: |
-          if [ "${{ needs.validate.result }}" != "success" ] || [ "${{ needs.test.result }}" != "success" ] || [ "${{ needs.scan.result }}" != "success" ]; then
+          VALIDATE="${{ needs.validate.result }}"
+          TEST="${{ needs.test.result }}"
+          SCAN="${{ needs.scan.result }}"
+          
+          echo "✅ Docker Compose validation: $VALIDATE"
+          echo "✅ Service tests: $TEST"
+          echo "✅ Security scan: $SCAN"
+          
+          if [ "$VALIDATE" != "success" ] || [ "$TEST" != "success" ] || [ "$SCAN" != "success" ]; then
             exit 1
           fi
