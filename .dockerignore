@@ -1,0 +1,61 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# CI/CD
+.github
+.gitlab-ci.yml
+.circleci
+.travis.yml
+
+# Documentation
+*.md
+docs
+*.txt
+LICENSE
+
+# Dependencies (will be fresh installed in container)
+node_modules
+__pycache__
+*.egg-info
+.venv
+venv
+env
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Build artifacts
+dist
+build
+*.pyc
+*.pyo
+*.o
+*.a
+
+# Testing
+.coverage
+.pytest_cache
+test_results
+coverage.xml
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Temporary files
+*.tmp
+*.log
+tmp
+temp
+
+# OS
+Thumbs.db
+Desktop.ini
