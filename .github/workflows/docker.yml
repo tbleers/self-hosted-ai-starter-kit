@@ -27,6 +27,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Create .env file for CI
+        run: |
+          cat > .env << EOF
+          POSTGRES_USER=ci_user
+          POSTGRES_PASSWORD=ci_password
+          POSTGRES_DB=n8n_ci
+          N8N_ENCRYPTION_KEY=ci-secret-key-for-testing-only
+          N8N_USER_MANAGEMENT_JWT_SECRET=ci-jwt-secret-for-testing-only
+          N8N_DEFAULT_BINARY_DATA_MODE=filesystem
+          EOF
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -97,6 +108,17 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Create .env file for CI
+        run: |
+          cat > .env << EOF
+          POSTGRES_USER=ci_user
+          POSTGRES_PASSWORD=ci_password
+          POSTGRES_DB=n8n_ci
+          N8N_ENCRYPTION_KEY=ci-secret-key-for-testing-only
+          N8N_USER_MANAGEMENT_JWT_SECRET=ci-jwt-secret-for-testing-only
+          N8N_DEFAULT_BINARY_DATA_MODE=filesystem
+          EOF
 
       - name: Start services
         run: |
