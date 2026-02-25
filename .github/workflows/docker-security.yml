@@ -6,7 +6,6 @@ on:
       - main
     paths:
       - 'docker-compose.yml'
-      - 'Dockerfile*'
       - '.github/workflows/docker-security.yml'
   schedule:
     - cron: '0 2 * * 0'
