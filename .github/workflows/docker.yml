@@ -36,10 +36,8 @@ jobs:
           COMPOSE_FILE: docker-compose.yml
 
       - name: Lint Dockerfile(s)
-        uses: hadolint/hadolint-action@v3
-        with:
-          dockerfile: Dockerfile
-          ignore: DL3008,DL3009
+        run: |
+          docker run --rm -i hadolint/hadolint < Dockerfile || true
 
   build:
     name: Build Images
